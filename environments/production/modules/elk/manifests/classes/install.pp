@@ -12,7 +12,7 @@ class elk::classes::install {
 
   package { $elk_packages :
     ensure => latest,
-    require => Class[common::classes::configuration],
+    require => Class['common::classes::configuration'],
   }
 
   package { 'nginx' :
