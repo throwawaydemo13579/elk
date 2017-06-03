@@ -15,3 +15,9 @@ alias grep='grep --color=auto'
 
 # Fix garbage characters in the `tree` command
 alias tree='tree --charset=ASCII'
+
+
+echo ""
+echo "[            This server has been puppetized            ]"
+echo ""
+
