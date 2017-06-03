@@ -9,6 +9,8 @@ fi
 MODULE=$1
 
 mkdir -pv $MODULE/manifests/classes
+mkdir -pv $MODULE/files
+mkdir -pv $MODULE/templates
 
 echo "class $MODULE {"                              > $MODULE/manifests/init.pp
 echo "	include '$MODULE::classes::install'"       >> $MODULE/manifests/init.pp
