@@ -10,5 +10,9 @@ class common::classes::configuration {
     source => 'puppet:///modules/common/etc/profile.d/custom_profile.sh'
   }
 
+  file { '/etc/yum.repos.d/internal-mirror.repo' :
+    ensure => file,
+    source => 'puppet:///modules/common/etc/yum.repos.d/internal-mirror.repo'
+  }
 }
 

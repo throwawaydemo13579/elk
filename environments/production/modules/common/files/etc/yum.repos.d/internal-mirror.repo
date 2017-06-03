@@ -1,0 +1,7 @@
+[internal-demo-mirror] 
+name=Internal Puppet Mirror 
+
+baseurl=http://puppetmaster.banjo.elkdemo.local/repo
+
+gpgcheck=0
+enabled=1

@@ -5,14 +5,19 @@ class elk::classes::install {
     'jdk',
     'elasticsearch',
     'kibana',
-    'epel-release',
-    'nginx',
+    'nginx-release-centos',
     'httpd-tools',
     'logstash'
   ]
 
   package { $elk_packages :
     ensure => latest,
+    require => Class[common::classes::configuration],
+  }
+
+  package { 'nginx' :
+    ensure => latest,
+    require => Package[$elk_packages],
   }
 
 
