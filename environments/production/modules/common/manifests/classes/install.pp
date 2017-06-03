@@ -16,3 +16,5 @@ class common::classes::install {
   package { $common_packages :
     ensure => present,
   }
+
+}
