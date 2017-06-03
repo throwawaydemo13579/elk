@@ -1,0 +1,2 @@
+class elk::classes::configuration {
+}
