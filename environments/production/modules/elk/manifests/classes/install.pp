@@ -3,11 +3,8 @@ class elk::classes::install {
 
   $elk_packages = [
     'jdk',
-    'elasticsearch',
-    'kibana',
     'nginx-release-centos',
     'httpd-tools',
-    'logstash'
   ]
 
   package { $elk_packages :
