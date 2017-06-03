@@ -1,0 +1,4 @@
+# elkstack.banjo.demo.local.yaml
+---
+classes:
+  - elk 
