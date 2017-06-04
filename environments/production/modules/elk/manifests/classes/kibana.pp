@@ -11,6 +11,17 @@ class elk::classes::kibana {
     require => Class['elk::classes::install'],
   }
 
+  file {'/etc/nginx/conf/ssl.crt' :
+    ensure => directory,
+    require => Class['elk::classes::install'],
+  }
+
+  file {'/etc/nginx/conf/ssl.crt/elkstack.kaiserbeto.com.crt' :
+    ensure => file,
+    source => 'puppet:///modules/elk/etc/nginx/conf.d/ssl.crt/elkstack.kaiserbeto.com.crt',
+    require => File['/etc/nginx/conf/ssl.crt'],
+  }
+
   file {'/etc/kibana/kibana.yml' :
    ensure => file,
    source => 'puppet:///modules/elk/etc/kibana/kibana.yml',
