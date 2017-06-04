@@ -1,0 +1,371 @@
+{
+  "template" : "logstash-*",
+  "version" : 50001,
+  "settings" : {
+    "index.refresh_interval" : "5s"
+  },
+  "mappings" : {
+      "_default_" : {
+        "properties" : {
+          "@timestamp" : {
+            "type" : "date",
+            "include_in_all" : false
+          },
+          "@version" : {
+            "type" : "keyword",
+            "include_in_all" : false
+          },
+          "geoip" : {
+            "dynamic" : "true",
+            "properties" : {
+              "ip" : {
+                "type" : "ip"
+              },
+              "latitude" : {
+                "type" : "half_float"
+              },
+              "location" : {
+                "type" : "geo_point"
+              },
+              "longitude" : {
+                "type" : "half_float"
+              }
+            }
+          }
+        }
+      },
+      "nginx_web" : {
+        "_all" : {
+          "enabled" : true,
+          "norms" : false
+        },
+        "dynamic_templates" : [
+          {
+            "message_field" : {
+              "path_match" : "message",
+              "match_mapping_type" : "string",
+              "mapping" : {
+                "norms" : false,
+                "type" : "text"
+              }
+            }
+          },
+          {
+            "string_fields" : {
+              "match" : "*",
+              "match_mapping_type" : "string",
+              "mapping" : {
+                "fields" : {
+                  "keyword" : {
+                    "type" : "keyword"
+                  }
+                },
+                "norms" : false,
+                "type" : "text"
+              }
+            }
+          }
+        ],
+        "properties" : {
+          "@timestamp" : {
+            "type" : "date",
+            "include_in_all" : false
+          },
+          "@version" : {
+            "type" : "keyword",
+            "include_in_all" : false
+          },
+          "agent" : {
+            "type" : "text",
+            "norms" : false,
+            "fields" : {
+              "keyword" : {
+                "type" : "keyword"
+              }
+            }
+          },
+          "auth" : {
+            "type" : "text",
+            "norms" : false,
+            "fields" : {
+              "keyword" : {
+                "type" : "keyword"
+              }
+            }
+          },
+          "bytes" : {
+            "type" : "long"
+          },
+          "clientip" : {
+            "type" : "ip",
+            "fields" : {
+              "keyword" : {
+                "type" : "keyword"
+              }
+            }
+          },
+          "device" : {
+            "type" : "text",
+            "norms" : false,
+            "fields" : {
+              "keyword" : {
+                "type" : "keyword"
+              }
+            }
+          },
+          "extra_fields" : {
+            "type" : "text",
+            "norms" : false,
+            "fields" : {
+              "keyword" : {
+                "type" : "keyword"
+              }
+            }
+          },
+          "geoip" : {
+            "dynamic" : "true",
+            "properties" : {
+              "city_name" : {
+                "type" : "text",
+                "norms" : false,
+                "fields" : {
+                  "keyword" : {
+                    "type" : "keyword"
+                  }
+                }
+              },
+              "continent_code" : {
+                "type" : "text",
+                "norms" : false,
+                "fields" : {
+                  "keyword" : {
+                    "type" : "keyword"
+                  }
+                }
+              },
+              "country_code2" : {
+                "type" : "text",
+                "norms" : false,
+                "fields" : {
+                  "keyword" : {
+                    "type" : "keyword"
+                  }
+                }
+              },
+              "country_code3" : {
+                "type" : "text",
+                "norms" : false,
+                "fields" : {
+                  "keyword" : {
+                    "type" : "keyword"
+                  }
+                }
+              },
+              "country_name" : {
+                "type" : "text",
+                "norms" : false,
+                "fields" : {
+                  "keyword" : {
+                    "type" : "keyword"
+                  }
+                }
+              },
+              "dma_code" : {
+                "type" : "long"
+              },
+              "ip" : {
+                "type" : "ip"
+              },
+              "latitude" : {
+                "type" : "half_float"
+              },
+              "location" : {
+                "type" : "geo_point"
+              },
+              "longitude" : {
+                "type" : "half_float"
+              },
+              "postal_code" : {
+                "type" : "text",
+                "norms" : false,
+                "fields" : {
+                  "keyword" : {
+                    "type" : "keyword"
+                  }
+                }
+              },
+              "region_code" : {
+                "type" : "text",
+                "norms" : false,
+                "fields" : {
+                  "keyword" : {
+                    "type" : "keyword"
+                  }
+                }
+              },
+              "region_name" : {
+                "type" : "text",
+                "norms" : false,
+                "fields" : {
+                  "keyword" : {
+                    "type" : "keyword"
+                  }
+                }
+              },
+              "timezone" : {
+                "type" : "text",
+                "norms" : false,
+                "fields" : {
+                  "keyword" : {
+                    "type" : "keyword"
+                  }
+                }
+              }
+            }
+          },
+          "host" : {
+            "type" : "text",
+            "norms" : false,
+            "fields" : {
+              "keyword" : {
+                "type" : "keyword"
+              }
+            }
+          },
+          "httpversion" : {
+            "type" : "text",
+            "norms" : false,
+            "fields" : {
+              "keyword" : {
+                "type" : "keyword"
+              }
+            }
+          },
+          "ident" : {
+            "type" : "text",
+            "norms" : false,
+            "fields" : {
+              "keyword" : {
+                "type" : "keyword"
+              }
+            }
+          },
+          "major" : {
+            "type" : "text",
+            "norms" : false,
+            "fields" : {
+              "keyword" : {
+                "type" : "keyword"
+              }
+            }
+          },
+          "message" : {
+            "type" : "text",
+            "norms" : false
+          },
+          "minor" : {
+            "type" : "text",
+            "norms" : false,
+            "fields" : {
+              "keyword" : {
+                "type" : "keyword"
+              }
+            }
+          },
+          "name" : {
+            "type" : "text",
+            "norms" : false,
+            "fields" : {
+              "keyword" : {
+                "type" : "keyword"
+              }
+            }
+          },
+          "os" : {
+            "type" : "text",
+            "norms" : false,
+            "fields" : {
+              "keyword" : {
+                "type" : "keyword"
+              }
+            }
+          },
+          "os_name" : {
+            "type" : "text",
+            "norms" : false,
+            "fields" : {
+              "keyword" : {
+                "type" : "keyword"
+              }
+            }
+          },
+          "patch" : {
+            "type" : "text",
+            "norms" : false,
+            "fields" : {
+              "keyword" : {
+                "type" : "keyword"
+              }
+            }
+          },
+          "path" : {
+            "type" : "text",
+            "norms" : false,
+            "fields" : {
+              "keyword" : {
+                "type" : "keyword"
+              }
+            }
+          },
+          "referrer" : {
+            "type" : "text",
+            "norms" : false,
+            "fields" : {
+              "keyword" : {
+                "type" : "keyword"
+              }
+            }
+          },
+          "request" : {
+            "type" : "text",
+            "norms" : false,
+            "fields" : {
+              "keyword" : {
+                "type" : "keyword"
+              }
+            }
+          },
+          "response" : {
+            "type" : "short"
+          },
+          "tags" : {
+            "type" : "text",
+            "norms" : false,
+            "fields" : {
+              "keyword" : {
+                "type" : "keyword"
+              }
+            }
+          },
+          "type" : {
+            "type" : "text",
+            "norms" : false,
+            "fields" : {
+              "keyword" : {
+                "type" : "keyword"
+              }
+            }
+          },
+          "verb" : {
+            "type" : "text",
+            "norms" : false,
+            "fields" : {
+              "keyword" : {
+                "type" : "keyword"
+              }
+            }
+          }
+        }
+      }
+    }
+}
